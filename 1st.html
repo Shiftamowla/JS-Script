@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        var first_name='Shifta '
+        var last_name='Mowla'
+        var name= first_name + last_name
+        alert("It's SHIFTA")
+
+        // Personal Details
+        document.write("Here I Am Printing My Personal Details ('-') <br><br>");
+        document.write("Name: " + name);
+        document.write("<br>Id: 123456789 <br>");
+        document.write("Country: Bangladesh <br><br>");
+
+
+        var text = prompt ("Enter Your Name : ")
+        text = text.toUpperCase()
+        // User Input
+
+        document.write("Your Name is " + text );
+        document.write("<br>The Number of Your Name Carecter: " + text.length);
+
+        var present_year = 2025;
+        var birth_year = prompt("Enter Your Birth Year: ");
+        var age = present_year - birth_year;
+
+        // Age Calculator
+        document.write("<br><br>Your Birth Year: " + birth_year);
+        document.write("<br>Your Age is: " + age + " years");
+
+    </script>
+</body>
+</html>
