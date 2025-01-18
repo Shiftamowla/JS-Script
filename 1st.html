@@ -3,38 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Magic Page</title>
 </head>
 <body>
+    <h1>Welcome to the Magic Page!</h1>
+
+    <!-- My Personal Details -->
+    <h2>My Personal Details</h2>
+    <p><strong>Name:</strong> Shifta Mowla</p>
+    <p><strong>ID:</strong> 123456789</p>
+    <p><strong>Country:</strong> Bangladesh</p>
+
+    <!-- Client Details -->
+    <h2>Your Details</h2>
+    <p id="client-name"></p>
+    <p id="client-birthdate"></p>
+
+    <!-- Exact Age -->
+    <h2>Your Exact Age</h2>
+    <p id="exact-age"></p>
+    <hr>
+
+    <!-- Childhood Work -->
+    <h2>My Childhood Work :)</h2>
+    <button onclick="prev()">Previous</button>
+    <img id="displayed-image" height="300px" width="400px" src="PREMIUM.jpg" alt="Childhood Work">
+    <button onclick="next()">Next</button>
+
     <script>
+        // Alert with your name
+        alert("It's SHIFTA");
 
-        var first_name='Shifta '
-        var last_name='Mowla'
-        var name= first_name + last_name
-        alert("It's SHIFTA")
+        // Get client details
+        var clientName = prompt("Enter Your Name:");
+        var birthDateInput = prompt("Enter Your Birth Date (YYYY-MM-DD):");
 
-        // Personal Details
-        document.write("Here I Am Printing My Personal Details ('-') <br><br>");
-        document.write("Name: " + name);
-        document.write("<br>Id: 123456789 <br>");
-        document.write("Country: Bangladesh <br><br>");
+        // Display client details
+        document.getElementById("client-name").innerText = "Your Name: " + clientName;
+        document.getElementById("client-birthdate").innerText = "Your Birth Date: " + birthDateInput;
 
+        // Calculate exact age
+        var birthDate = new Date(birthDateInput);
+        var today = new Date();
 
-        var text = prompt ("Enter Your Name : ")
-        text = text.toUpperCase()
-        // User Input
+        var years = today.getFullYear() - birthDate.getFullYear();
+        var months = today.getMonth() - birthDate.getMonth();
+        var days = today.getDate() - birthDate.getDate();
 
-        document.write("Your Name is " + text );
-        document.write("<br>The Number of Your Name Carecter: " + text.length);
+        if (days < 0) {
+            months -= 1;
+            days += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
+        }
+        if (months < 0) {
+            years -= 1;
+            months += 12;
+        }
 
-        var present_year = 2025;
-        var birth_year = prompt("Enter Your Birth Year: ");
-        var age = present_year - birth_year;
+        // Display exact age
+        document.getElementById("exact-age").innerText = 
+            "Your Age: " + years + " years, " + months + " months, and " + days + " days.";
 
-        // Age Calculator
-        document.write("<br><br>Your Birth Year: " + birth_year);
-        document.write("<br>Your Age is: " + age + " years");
+        // Image carousel logic
+        var pic = [
+            "PREMIUM.jpg",
+            "chees.jpg",
+            "dog in a jar.jpg",
+            "logo.jpg",
+            "visiting card.png",
+            "id card.png",
+            "CRUD.png",
+            "hero.png",
+            "Untitled-1.jpg"
+        ];
 
+        var pictag = document.getElementById("displayed-image");
+        var count = 0;
+
+        function next() {
+            count++;
+            if (count >= pic.length) {
+                count = 0; // Reset to first image
+            }
+            pictag.src = pic[count];
+        }
+
+        function prev() {
+            count--;
+            if (count < 0) {
+                count = pic.length - 1; // Go to last image
+            }
+            pictag.src = pic[count];
+        }
     </script>
 </body>
 </html>
